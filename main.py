@@ -34,15 +34,19 @@ class TestExecutor:
     def initialize_interface_layer(self):
         LOGGER.info("Initialize interface layer...")
         for tool in self.configuration["tools"]:
-            module_import = __import__("modules.%s.a_%s" % (tool, tool), fromlist=["Abstract%s" % tool])
+            module_import = __import__("modules.%s.a_%s" % (tool, tool),
+                                       fromlist=["Abstract%s" % tool])
             # Get Class Object
-            module_class = getattr(module_import, 'Abstract%s' % tool)
+            module_class = getattr(module_import,
+                                   'Abstract%s' % tool)
             # Set Class as attribute for self, in order to be accessible from here
-            setattr(self, tool, module_class(self.configuration[tool], copy.deepcopy(self.args)))
+            setattr(self, tool, module_class(self.configuration[tool],
+                                             copy.deepcopy(self.args)))
             # Share Interface manager
             self.__getattribute__(tool).interface_manager = self.interface_manager
             # Collect Interfaces
-            self.interface_manager.collect(tool_name=tool, object_type=self.__getattribute__(tool))
+            self.interface_manager.collect(tool_name=tool,
+                                           object_type=self.__getattribute__(tool))
 
     def initialize_tool_set(self):
         """
@@ -88,7 +92,7 @@ class TestExecutor:
         Send dia request DTC
         :return:
         """
-        return self.interface_manager.call(method_name="dia.read_dtc")
+        return self.interface_manager.call(method_name="dia.diagnostic_request")
 
     def run(self, tests: list):
         """
