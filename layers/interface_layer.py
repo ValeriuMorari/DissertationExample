@@ -38,9 +38,6 @@ class InterfaceHandler(object):
         """
         self.error_codes_stack = {}
 
-        # ignore_label variable indicate that method 'call' will not look up to tool_name in case of calling a interface
-        self.ignore_label = None
-
     def collect(self, tool_name=None, object_type=None):
         """
         Collects all interfaces
