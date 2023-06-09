@@ -1,0 +1,15 @@
+{
+  "tools": [
+    "DiagnosticsBMW"
+  ],
+  "DiagnosticsVW": {
+    "attr1": "demo",
+    "attr2": "demo",
+    "attr3": "demo"
+  },
+  "DiagnosticsBMW": {
+    "attr1": "demo",
+    "attr2": "demo",
+    "attr3": "demo"
+  }
+}
